@@ -63,7 +63,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>target.classes.Bot</mainClass>
+                            <mainClass>target.classes.Bot.class</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
