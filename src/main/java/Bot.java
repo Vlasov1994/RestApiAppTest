@@ -10,7 +10,7 @@ public class Bot {
         try {
             Frontend front = new Frontend();
 
-            Server server = new Server(5000);
+            Server server = new Server(Integer.parseInt(System.getenv("PORT")));
             ServletContextHandler context  = new ServletContextHandler(ServletContextHandler.SESSIONS);
             server.setHandler(context);
             context.addServlet(new ServletHolder(front), "/api/webhook");
