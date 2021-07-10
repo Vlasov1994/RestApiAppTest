@@ -63,19 +63,19 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>Bot</mainClass>
+                            <mainClass>Bot.java</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
+            <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Bot.class</mainClass>
+                            <mainClass>Bot</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -91,7 +91,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 
