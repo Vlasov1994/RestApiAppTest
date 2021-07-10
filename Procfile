@@ -1,1 +1,1 @@
-web: gunicorn Bot:main
+web: java -jar out/artifacts/RestApiAppTest_jar/RestApiAppTest.jar
