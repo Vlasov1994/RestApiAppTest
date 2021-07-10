@@ -1,1 +1,1 @@
-web: java -jar out/artifacts/RestApiAppTest_jar/RestApiAppTest.jar
+web: java -Dserver.port=$PORT -jar target/RestApiAppTest-1.0-SNAPSHOT.jar
