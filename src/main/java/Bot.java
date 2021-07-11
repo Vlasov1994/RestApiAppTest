@@ -6,20 +6,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Bot {
-    public static void main(String[] args) {
-        try {
+    public static void main(String[] args) throws Exception {
             Frontend front = new Frontend();
 
-            Server server = new Server(Integer.parseInt(System.getenv("PORT")));
+            Server server = new Server(Integer.parseInt(System.getenv("PORT"))/*8080*/);
             ServletContextHandler context  = new ServletContextHandler(ServletContextHandler.SESSIONS);
             server.setHandler(context);
             context.addServlet(new ServletHolder(front), "/api/webhook");
 
             server.start();
             server.join();
-        } catch (Exception e) {
-            printExceptionInFile(e.getMessage());
-        }
     }
 
     public static void printExceptionInFile(String exception) {
