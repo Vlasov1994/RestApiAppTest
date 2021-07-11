@@ -19,7 +19,7 @@ public class Bot {
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        Frontend front = new Frontend();
+        Frontend front = new Frontend(client);
         front.postBody = response.body();
         Server server = new Server(Integer.parseInt(System.getenv("PORT"))/*8080*/);
         ServletContextHandler context  = new ServletContextHandler(ServletContextHandler.SESSIONS);
