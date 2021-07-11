@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Frontend extends HttpServlet {
-    private String postBody = "Post Body is null";
+    public String postBody = "Post Body is null";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

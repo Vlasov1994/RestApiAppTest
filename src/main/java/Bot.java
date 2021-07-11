@@ -4,18 +4,30 @@ import org.eclipse.jetty.servlet.ServletHolder;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class Bot {
     public static void main(String[] args) throws Exception {
-            Frontend front = new Frontend();
+        HttpClient client = HttpClient.newHttpClient();
 
-            Server server = new Server(Integer.parseInt(System.getenv("PORT"))/*8080*/);
-            ServletContextHandler context  = new ServletContextHandler(ServletContextHandler.SESSIONS);
-            server.setHandler(context);
-            context.addServlet(new ServletHolder(front), "/api/webhook");
+        HttpRequest request = HttpRequest.newBuilder(
+                URI.create("https://api.telegram.org/bot1012952375:AAEJXfg7OxuVIa7vzBmkzs9pFa3ZnnkAqWA/setWebhook?url=https://rest-api-app-test.herokuapp.com/api/webhook"))
+                //.header("gay", "true")
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            server.start();
-            server.join();
+        Frontend front = new Frontend();
+        front.postBody = response.body();
+        Server server = new Server(Integer.parseInt(System.getenv("PORT"))/*8080*/);
+        ServletContextHandler context  = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        server.setHandler(context);
+        context.addServlet(new ServletHolder(front), "/api/webhook");
+
+        server.start();
+        server.join();
     }
 
     public static void printExceptionInFile(String exception) {
