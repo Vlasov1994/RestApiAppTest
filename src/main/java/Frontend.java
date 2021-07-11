@@ -40,7 +40,7 @@ public class Frontend extends HttpServlet {
 
         HttpRequest httpRequest = HttpRequest.newBuilder(
                 URI.create("https://api.telegram.org/bot1012952375:AAEJXfg7OxuVIa7vzBmkzs9pFa3ZnnkAqWA/" +
-                        "sendMessage?chat_id="+1+"&text=Hello"))
+                        "sendMessage?chat_id="+chatId+"&text=Hello"))
                 //.header("gay", "true")
                 .build();
         try {
