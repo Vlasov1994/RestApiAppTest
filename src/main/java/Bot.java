@@ -2,6 +2,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import javax.servlet.Servlet;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
@@ -24,7 +25,7 @@ public class Bot {
         Server server = new Server(Integer.parseInt(System.getenv("PORT"))/*8080*/);
         ServletContextHandler context  = new ServletContextHandler(ServletContextHandler.SESSIONS);
         server.setHandler(context);
-        context.addServlet(new ServletHolder(front), "/api/webhook");
+        context.addServlet(new ServletHolder((Servlet) front), "/api/webhook");
 
         server.start();
         server.join();
